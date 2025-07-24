@@ -1,0 +1,33 @@
+<h2>Books</h2>
+
+
+@for (book of books; track book.id) {
+  <li>
+    <input type="text" [(ngModel)]="book.title" (blur)="updateBook(book)" placeholder="Title" />
+    <input type="text" [(ngModel)]="book.author" (blur)="updateBook(book)" placeholder="Author" />
+    <label>
+      <input type="checkbox" [(ngModel)]="book.read" (change)="updateBook(book)" />
+      Read?
+    </label>
+    <button (click)="deleteBook(book.id)">Delete</button>
+  </li>
+}
+
+@if (books.length === 0) {
+  <p>No books available.</p>
+}
+<br>
+<hr />
+<button [routerLink]="['/books/new']">Create Book</button>
+<br>
+
+<!-- <h3>Add New Book</h3>
+<form (ngSubmit)="addBook()">
+  <input type="text" [(ngModel)]="newBook.title" name="title" placeholder="Title" required />
+  <input type="text" [(ngModel)]="newBook.author" name="author" placeholder="Author" required />
+  <label>
+    <input type="checkbox" [(ngModel)]="newBook.read" name="read" />
+    Read?
+  </label>
+  <button type="submit">Add</button>
+</form> -->
