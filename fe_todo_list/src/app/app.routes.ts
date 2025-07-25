@@ -10,6 +10,11 @@ export const routes: Routes = [
         canActivate: [noAuthGuard],
 	},
     {
+		path: 'signup',
+		loadComponent: () => import('./signup/signup').then((m) => m.SignupComponent),
+		canActivate: [noAuthGuard],
+	},
+    {
         path: 'todo-list',
         loadComponent: () => import('./todo-list/todo-list').then((m) => m.TodoListComponent), 
         canActivate: [authGuard],

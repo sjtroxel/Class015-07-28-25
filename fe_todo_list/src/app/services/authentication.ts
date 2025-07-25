@@ -18,6 +18,11 @@ export class AuthenticationService {
 		});
 	}
 
+	signUp(user: any) {
+    	return this.http.post('http://localhost:3000/users', user);
+  	}
+
+
 	setToken(token: string) {
 		localStorage.setItem('token', token);
 		this.tokenSubject.next(token);
