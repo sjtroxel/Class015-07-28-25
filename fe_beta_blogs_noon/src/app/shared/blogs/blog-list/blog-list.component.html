@@ -1,0 +1,14 @@
+@defer(on immediate) {
+  <div class="blog-container">
+    @for (blog of blogs; track blog.id) {
+      <div class="blog-preview-container">
+        <div class="blog-preview-content">
+          <h2>{{ blog.title }}</h2>
+          <p>{{ blog.user?.username }}</p>
+          <p>{{ blog.content }}</p>
+        </div>
+        <img src="https://assets.bitdegree.org/online-learning-platforms/storage/media/2018/08/how-to-become-a-programmer.jpg" alt="blog image" class="blog-image">
+      </div>
+    }
+  </div>
+}
