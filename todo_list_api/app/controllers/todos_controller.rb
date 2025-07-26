@@ -12,7 +12,7 @@ class TodosController < ApplicationController
   end
 
   def create
-    todo = Todo.new(todo_params)
+    todo = @current_user.todos.new(todo_params)
 
     if todo.save
       render json: TodoBlueprint.render(todo, view: :normal), status: :created
