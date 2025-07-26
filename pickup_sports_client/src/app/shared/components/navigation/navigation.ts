@@ -15,7 +15,6 @@ export class NavigationComponent {
   constructor(private authService:AuthenticationService) {}
 
   isLoggedIn() {
-    console.log("Change Detected!")
     return this.authService.isLoggedIn();
   }
 
