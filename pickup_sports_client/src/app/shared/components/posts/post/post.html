@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="post-header">
+        <div class="post-header-left">
+            <img src="https://cdn.mos.cms.futurecdn.net/YTNxxPZE35rhuWCASgEP7i-1200-80.jpg" alt="">
+            <div class="post-header-info">
+                <div class="post-header-info-name">{{post.user?.username}}</div>
+                <div class="post-header-info-date">{{post.created_at | date}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-content">{{post.content}}</div>
+</div>
