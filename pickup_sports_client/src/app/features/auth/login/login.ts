@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './login.html',
-  styleUrl: './login.scss'
+  styleUrl: '../auth.shared.scss'
 })
 export class Login {
   loginForm: FormGroup = new FormGroup({
