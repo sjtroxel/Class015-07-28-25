@@ -27,4 +27,10 @@ export const routes: Routes = [
       import('./pages/login/login').then((c) => c.LoginComponent),
 	canActivate: [noAuthGuard],
   },
+  {
+    path: 'signup',
+    loadComponent: () =>
+      import('./pages/signup/signup').then((c) => c.SignupComponent),
+	canActivate: [noAuthGuard],
+  },
 ];
