@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
 	providedIn: 'root',
@@ -12,11 +13,15 @@ export class AuthenticationService {
 	constructor(private http: HttpClient, private router: Router) {}
 
 	login(username: string, password: string) {
-		return this.http.post<{ token: string }>('http://localhost:3000/login', {
+		return this.http.post<{ token: string }>(`${environment.apiUrl}/login`, {
 			username,
 			password,
 		});
 	}
+
+	signup(user: any) {
+    	return this.http.post(`${environment.apiUrl}/users`, user);
+  	}
 
 	setToken(token: string) {
 		localStorage.setItem('token', token);
