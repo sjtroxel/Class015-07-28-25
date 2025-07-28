@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_request, except: [:index, :show]
+  before_action :authenticate_request
   before_action :set_book, only: [:show, :update, :destroy]
 
   def index
@@ -33,10 +33,16 @@ class BooksController < ApplicationController
     head :ok
   end
 
+  def my_books
+    books = @current_user.books
+
+    render json: BookBlueprint.render(books, view: :normal), status: :ok
+  end
+
   private
 
   def set_book
-    @book = Book.find_by(id: params[:id])
+    @book = @current_user.books.find_by(id: params[:id])
     return render json: { error: "Not Found" }, status: :not_found unless @book
   end
 

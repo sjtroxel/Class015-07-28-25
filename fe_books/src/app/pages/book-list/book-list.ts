@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BookService } from '../../services/book';
 import { Book } from '../../models/book';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication';
 
 @Component({
   selector: 'app-book-list',
@@ -17,14 +18,20 @@ export class BookListComponent implements OnInit {
   books: Book[] = [];
   newBook: Book = new Book();
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private authService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.loadBooks();
   }
 
   loadBooks(): void {
-    this.bookService.getBooks().subscribe((data) => (this.books = data));
+    if (!this.authService.isLoggedIn()) {
+      // Optionally redirect to login or show a message
+      console.warn('User is not logged in, no books will be loaded.');
+      return;
+    }
+
+    this.bookService.getMyBooks().subscribe((data) => (this.books = data));
   }
 
   addBook(): void {
