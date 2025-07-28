@@ -19,6 +19,10 @@ export class AuthenticationService {
     });
   }
 
+  signup(data: any) {
+    return this.http.post(`${environment.apiUrl}/users`, data);
+  }
+
   setToken(token: string) {
     localStorage.setItem('token', token);
     this.tokenSubject.next(token);
